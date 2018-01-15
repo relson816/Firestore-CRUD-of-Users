@@ -13,6 +13,8 @@ import { ItemService } from './services/item.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AddItemComponent } from './components/add-item/add-item.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
+import { UserService } from './services/user.service';
+import { UsersComponent } from './components/users/users.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { AddUserComponent } from './components/add-user/add-user.component';
     ItemsComponent,
     NavbarComponent,
     AddItemComponent,
-    AddUserComponent
+    AddUserComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,7 @@ import { AddUserComponent } from './components/add-user/add-user.component';
     AngularFireModule.initializeApp(environment.firebase, 'angularfs'),
     AngularFirestoreModule
   ],
-  providers: [ItemService],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

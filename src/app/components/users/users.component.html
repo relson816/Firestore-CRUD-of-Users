@@ -1,0 +1,33 @@
+<div *ngIf="users?.length > 0;else noUsers">
+  <ul *ngFor="let item of items" class="collection">
+    <li class="collection-user"><strong>{{user.title}}: </strong> {{user.description}} <a href="#" class="secondary-content">
+      <i (click)="editUser($event, user)" class="fa fa-pencil"></i>  
+      <i *ngIf="editState && userToEdit.id == user.id" (click)="clearState()" class="fa fa-compress"></i>  
+    </a>
+    
+    <div *ngIf="editState && userToEdit.id == user.id">
+      <form (ngSubmit)="updateUser(user)">
+          <div class="row">
+              <div class="input-field col s4">
+                <input type="text" placeholder="Add Name" [(ngModel)]="user.title" name="name">
+              </div>
+              <div class="input-field col s4">
+                <input type="text" placeholder="Add E-mail" [(ngModel)]="user.e-mail" name="E-mail">
+              </div>
+              <div class="input-field col s4">
+                <input type="text" placeholder="Add Password" [(ngModel)]="user.password" name="Password">
+              </div>
+              <input type="submit" value="Update User" class="btn orange">
+              <button (click)="deleteUser($event, item)" class="btn red">Delete User</button>
+            </div>
+      </form>
+    </div>
+
+    </li>
+  </ul>
+</div>
+
+<ng-template #noUsers>
+  <hr>
+  <h5>There are no users to list</h5>
+</ng-template>
